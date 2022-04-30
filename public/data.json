@@ -1,0 +1,173 @@
+[
+    {
+      "name": "Nautica Voyage",
+      "price": "$3,939.05",
+      "img": "https://i.ibb.co/4jGy7GS/p-1.webp",
+      "description":"Nautica Voyage is a fresh and salty sea breeze,that carries romantic scents of coastal herbs and woods, and awakes the man's instinct to measure his power with wild nature. This is a fragrance for an active and romantic man who lives by his own rules.",
+      "quantity": 23,
+      "company": "Nautica",
+      "availability": "In Stock"
+    },
+    {
+      "name": "Jean Paul Gaultier",
+      "price": "$3,520.81",
+      "img": "https://i.ibb.co/zZNdhZ6/p-2.webp",
+      "description":"Calvin Klein by Calvin Klein is a Chypre Floral fragrance for women. Calvin Klein was launched in 1978. Top notes are Hyacinth, Aldehydes, Gardenia, Peach and Raspberry; middle notes are Rose, Carnation, Orris Root, Lily-of-the-Valley and Jasmine; base notes are Oakmoss, Amber, Sandalwood, Cedar and Musk.",
+      "quantity": 35,
+      "company": "Calvin Klein",
+      "availability": "In Stock"
+    },
+    {
+      "name": "Mont Blanc Explorer",
+      "price": "$3,839.90",
+      "img": "https://i.ibb.co/pxBVJpH/p-3.webp",
+      "description":"Gianni Versace's eponymous first fragrance is a densely-woven animalic floral chypre sweetened with dried fruits, studded with spices, drunk on boozy notes and smoky with resins. On the color wheel, it would be represented by velvety russets, silky saffrons, and inky blacks.",
+      "quantity": 21,
+      "company": "Gianni Versace",
+      "availability": "In Stock"
+    },
+    {
+      "name": "Ck One odur women",
+      "price": "$1,274.54",
+      "img": "https://i.ibb.co/d718tWv/p-4.webp",
+      "description":"Top notes are Lavender, Pineapple, Bergamot and Lemon Verbena; middle notes are Red Apple, Dried Fruits, oak moss, Geranium, Coumarin and Rose; base notes are Tonka Bean and Sandalwood. The brand Mont Blanc presents a new men's fragrance in April 2011.",
+      "quantity": 21,
+      "company": "MONTBLANC",
+      "availability": "In Stock"
+    },
+    {
+      "name": "Coach For Men",
+      "price": "$1,261.72",
+      "img": "https://i.ibb.co/wrxKcN3/p-5.webp",
+      "description":"Fragrance Description: A true floral signature, the Dolce&Gabbana Dolce Eau de Parfum presents an elegant vision of romance. Dolce opens with a bright and uplifting burst of neroli and papaya flower—sweet yet refined.",
+      "quantity": 21,
+      "company": "Dolce & Gabbana",
+      "availability": "In Stock"
+    },
+    {
+      "name": "Perfume Travel Atomizer",
+      "price": "$2,007.15",
+      "img": "https://i.ibb.co/ZN9BpMJ/p-6.webp",
+      "description":"Gucci by Gucci Eau de Parfum by Gucci is a Chypre Floral fragrance for women. Gucci by Gucci Eau de Parfum was launched in 2007. The nose behind this fragrance is Ilias Ermenidis. Top notes are Guava and Pear; middle note is Tiare Flower; base notes are Patchouli, Honey and Musk.",
+      "quantity": 23,
+      "company": "GUCCI",
+      "availability": "In Stock"
+    },
+    {
+      "name": "Versace Dylan Blue",
+      "price": "$3,534.58",
+      "img": "https://i.ibb.co/2FXqL82/p-7.webp",
+      "description":"The fragrance bold ambrox notes, refreshed with hints of bergamot and grapefruit. The earthy and citrusy olfactory notes are enveloped with black pepper, papyrus wood and incense, along with mineral musk, tonka beans and saffron.",
+      "quantity": 29,
+      "company": "Jean-Paul Gaultier",
+      "availability": "In Stock"
+    },
+    {
+      "name": "Kenneth Cole Black",
+      "price": "$1,993.89",
+      "img": "https://i.ibb.co/Xk5trhL/p-8.webp",
+      "description":"What became of this inspiration is a feminine and timeless signature scent for woman of all ages. Top notes include bergamot, lavender and apple martini with middle notes of patchouli, paperwhites and creamy orchid. The base notes are cedarwood, white amber, sultry woods and musk.",
+      "quantity": 21,
+      "company": "Sarah Jessica Parker",
+      "availability": "In Stock"
+    },
+    {
+      "name": "Versace Eros men",
+      "price": "$2,116.95",
+      "img": "https://i.ibb.co/MMPVPvJ/p-9.webp",
+      "description":"Victoria by Victoria's Secret is a Floral Fruity Gourmand fragrance for women. Victoria was launched in 2013. Victoria was created by Adriana Medina-Baez, Quentin Bisch, Stephen Nilsen, Yann Vasnier and Aurelien Guichard. Top note is Red Berries; middle note is Rose; base notes are Caramel and Creme Brulee.",
+      "quantity": 32,
+      "company": "Victoria’s Secret",
+      "availability": "In Stock"
+    },
+    {
+      "name": "Mouag For Men",
+      "price": "$3,091.62",
+      "img": "https://i.ibb.co/VT3ntLY/p-10.webp",
+      "description":"The fragrance is fresh and sharp with warm woody base. The fresh and fruity top notes of apple and citrus are perfectly balanced with floral and spicy heart, dominated by pelargonium, warm cinnamon, and cloves. The base notes are very masculine: sandalwood, vetiver and precious cedar.",
+      "quantity": 29,
+      "company": "Hugo Boss",
+      "availability": "In Stock"
+    },
+    {
+      "name": "Isy DR",
+      "price": "$3,532.74",
+      "img": "https://i.ibb.co/bgf8s9N/p-12.webp",
+      "description":"Terre d'Hermès is a fruity-spicy-woody fragrance, meaning it features fruity top notes, in this case Orange and Grapefruit, its middle or heart notes are of pepper and its woody base notes, include cedar, patchouli and vetiver.",
+      "quantity": 38,
+      "company": "Hermès",
+      "availability": "In Stock"
+    },
+    {
+      "name": "Carala Gio",
+      "price": "$2,236.18",
+      "img": "https://i.ibb.co/kXwTmYF/p-2.webp",
+      "description":"About the Product. Fragrance Description: This is a bold and floral feminine fragrance for those who live by their own rules. It contains lavender essence from France combined with the sensuality of Moroccan orange blossom and a daring note of vanilla extract for a unique scent.",
+      "quantity": 27,
+      "company": "YSL",
+      "availability": "In Stock"
+    },
+    {
+      "name": "Dolce Perfume",
+      "price": "$3,314.92",
+      "img": "https://i.ibb.co/CnzB7mH/p-4.webp",
+      "description":"Bvlgari perfume, created by Bulgari in 1994, is the result of the following top fragrance notes: jasmine and rose. The middle notes are: bergamot and citrus, and the base of the fragrance is: tuberose and musk. Bvlgari perfume is recommended for romantic use. We only sell 100% authentic, brand name fragrances.",
+      "quantity": 24,
+      "company": "Bvlgari",
+      "availability": "In Stock"
+    },
+    {
+      "name": "Golorious Eau",
+      "price": "$3,314.99",
+      "img": "https://i.ibb.co/9hZKhXz/img-1.jpg",
+      "description":"Prada by Prada is a Amber Floral fragrance for women. Prada was launched in 1990. Top notes are Green Notes, Fruity Notes, Tarragon and Bergamot; middle notes are Rose, Jasmine, Ylang-Ylang, Carnation and Honey; base notes are Moss, Patchouli, Sandalwood, Vanilla, Musk, Benzoin and Ambergris.",
+      "quantity": 20,
+      "company": "Prada",
+      "availability": "In Stock"
+    },
+    {
+      "name": "Bibliotheque",
+      "price": "$3,232.91",
+      "img": "https://i.ibb.co/CnZfqy1/img-2.jpg",
+      "description":"The top notes are French jasmine, black truffle, ylang-ylang, black currant, and effervescent citrus. In the floral-spicy heart, dwells Tom Ford's black orchid, more imaginary than real, and the base combines woodsy notes (patchouli and sandalwood), dark chocolate, incense, amber, vetiver, vanilla, and balsam.",
+      "quantity": 29,
+      "company": "Tom Ford",
+      "availability": "In Stock"
+    },
+    {
+      "name": "Dunas De Un",
+      "price": "$3,131.11",
+      "img": "https://i.ibb.co/FK0m9gQ/img-3.jpg",
+      "description":"A bright bouquet of Tuberose, Jasmine and Orange Blossoms, enhanced by the vibrant notes of Cedarwood and a warm Vanilla accord, enclosed in a bottle that resembles a talisman: a metaphor for the world.",
+      "quantity": 32,
+      "company": "Giorgio Armani",
+      "availability": "In Stock"
+    },
+    {
+      "name": "Cuerpo Eau",
+      "price": "$3,626.73",
+      "img": "https://i.ibb.co/nMMxP8T/img-4.jpg",
+      "description":"Ralph by Ralph Lauren is a Floral Fruity fragrance for women. Ralph was launched in 2000. The nose behind this fragrance is Alain Alchenberger. Top notes are Apple Leaf, Italian Mandarin and Japanese Osmanthus; middle notes are Yellow Freesia, Magnolia and Boronia; base notes are Musk and White Iris.",
+      "quantity": 37,
+      "company": "Ralph Lauren",
+      "availability": "In Stock"
+    },
+    {
+      "name": "Patiala Eau",
+      "price": "$2,269.85",
+      "img": "https://i.ibb.co/QDtgqMN/img-5.jpg",
+      "description":"Chloé Eau de Parfum begins with a combination of floral powdery notes: hints of peony, lychee, and springtime freesia. The airy, flirtatious head notes drift away to reveal the richer and more sensual side of the rose.",
+      "quantity": 34,
+      "company": "Chloe",
+      "availability": "In Stock"
+    },
+    {
+      "name": "The Alchemist",
+      "price": "$2,183.61",
+      "img": "https://i.ibb.co/xJndKgv/img-6.jpg",
+      "description":"Coco Mademoiselle Parfum by Chanel is a Amber Floral fragrance for women. The nose behind this fragrance is Jacques Polge. Top notes are Bergamot, Orange and Grapefruit; middle notes are Rose, Litchi and Jasmine; base notes are Patchouli, Vanilla, Musk and Vetiver.",
+      "quantity": 39,
+      "company": "CHANEL",
+      "availability": "In Stock"
+    }
+  ]
