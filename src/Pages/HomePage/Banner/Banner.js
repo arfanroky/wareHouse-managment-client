@@ -9,14 +9,15 @@ import Banner6 from '../../../images/Banner/p-6.webp';
 
 const Banner = () => {
     return (
-        <div id="carouselExampleControls" className="carousel slide relative bg-gray-200" data-bs-ride="carousel">
+        <div id="carouselExampleControls" className="carousel slide relative " data-bs-ride="carousel">
         <div className="carousel-inner relative w-full overflow-hidden">
           <div className="carousel-item active relative float-left w-full">
             <div className='w-full mx-4 md:mx-12 flex justify-around items-center'>
             <div className='w-1/2 mr-auto '>
-                  <h1 className='md:text-6xl text-3xl font-bold text-black uppercase my-4'>Dylan Blue</h1>
+                  <h1 className='md:text-6xl text-3xl font-bold  uppercase my-4 text-sky-300 '>Iss Spray</h1>
                   <p className='text-justify md:block hidden max-w-lg my-4'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi omnis repellendus illo debitis voluptatem non laudantium at quibusdam. Reiciendis, assumenda doloribus dolore tempore aliquid sed ex asperiores voluptatem fuga vitae.</p>
-                  <button className='py-3 px-5 outline-none border border-cyan-600 bg-cyan-600 font-medium text-xl text-white'>See More</button>
+                  <button className='py-3 px-8 outline-none border font-medium text-xl text-black rounded bg-gradient-to-t from-sky-200 to-gray-400 
+                  hover:scale-90 transition-all'>See More</button>
               </div>
            <div className='w-1/2'>
            <img
@@ -31,9 +32,10 @@ const Banner = () => {
           <div className="carousel-item relative float-left w-full">
           <div className='w-full mx-4 md:mx-12 flex justify-around items-center'>
             <div className='w-1/2 mr-auto '>
-                  <h1 className='md:text-6xl text-3xl font-bold text-black uppercase my-4'>Dylan Blue</h1>
+                  <h1 className='md:text-6xl text-3xl font-bold text-orange-300 uppercase my-4'>Dylan Blue</h1>
                   <p className='text-justify md:block hidden max-w-lg my-4'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi omnis repellendus illo debitis voluptatem non laudantium at quibusdam. Reiciendis, assumenda doloribus dolore tempore aliquid sed ex asperiores voluptatem fuga vitae.</p>
-                  <button className='py-3 px-5 outline-none border border-cyan-600 bg-cyan-600 font-medium text-xl text-white'>See More</button>
+                  <button className='py-3 px-8 outline-none border font-medium text-xl text-white rounded bg-gradient-to-t from-violet-500 to-blue-600 
+                  hover:scale-90 transition-all'>See More</button>
               </div>
            <div className='w-1/2'>
            <img
@@ -48,9 +50,12 @@ const Banner = () => {
           <div className="carousel-item relative float-left w-full">
           <div className='w-full mx-4 md:mx-12 flex justify-around items-center'>
             <div className='w-1/2 mr-auto '>
-                  <h1 className='md:text-6xl text-3xl font-bold text-black uppercase my-4'>Dylan Blue</h1>
+                  <h1 className='md:text-6xl text-3xl font-bold text-pink-300 uppercase my-4'>
+                    Eyonc Ea
+                  </h1>
                   <p className='text-justify md:block hidden max-w-lg my-4'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi omnis repellendus illo debitis voluptatem non laudantium at quibusdam. Reiciendis, assumenda doloribus dolore tempore aliquid sed ex asperiores voluptatem fuga vitae.</p>
-                  <button className='py-3 px-5 outline-none border border-cyan-600 bg-cyan-600 font-medium text-xl text-white'>See More</button>
+                  <button className='py-3 px-8 outline-none border font-medium text-xl text-white rounded bg-gradient-to-t from-violet-500 to-pink-400 
+                  hover:scale-90 transition-all'>See More</button>
               </div>
            <div className='w-1/2'>
            <img

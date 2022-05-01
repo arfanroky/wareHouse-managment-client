@@ -8,7 +8,7 @@ const usePerfumes = () =>{
         fetch('https://boiling-thicket-81121.herokuapp.com/perfume')
         .then(res => res.json())
         .then(data => setPerfumes(data));
-    }, [])
+    }, [perfumes])
 
     return [perfumes, setPerfumes];
 }
