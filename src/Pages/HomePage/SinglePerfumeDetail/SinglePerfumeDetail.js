@@ -4,7 +4,7 @@ const SinglePerfumeDetail = () => {
     
     return (
         <div>
-            
+            this will be detail
         </div>
     );
 };
