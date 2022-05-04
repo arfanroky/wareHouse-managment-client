@@ -3,7 +3,7 @@ import React from 'react'
 const SingleInventory = ({perfume}) => {
     const {_id, name, img, description, price, company, quantity, availability} = perfume;
 
-    // const desc = description?.slice(0, 120);
+    const desc = description?.slice(0, 120);
 
   return (
     <>
@@ -21,7 +21,7 @@ const SingleInventory = ({perfume}) => {
                 <p className='my-2'><span className='font-semibold text-xl text-pink-300'>Company: </span>  {company}</p>
                 <p className='my-2'><span className='font-semibold text-xl text-orange-300'>Quantity: </span>{quantity}</p>
                 <p className='my-2'><span className='font-semibold text-xl text-orange-300'>Availability: </span>{availability}</p>
-                <p className='text-md pr-2 text-justify pb-2'>{description}</p>
+                <p className='text-md pr-2 text-justify pb-2'>{desc}</p>
                 <p className='my-2'><span className='font-semibold text-xl text-orange-300'>Price: </span>{price}</p>
 
                 <button className='absolute bottom-0 left-0 w-full py-3 bg-pink-300 text-white rounded text-lg font-semibold'>Manage Stock</button>

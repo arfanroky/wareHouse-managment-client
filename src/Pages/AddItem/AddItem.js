@@ -1,8 +1,11 @@
 import React, { useRef } from 'react';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import auth from '../../firebase.init';
 
 const AddItem = () => {
     const nameRef = useRef('')
     const PriceRef = useRef('')
+    const [user, loading, error] = useAuthState(auth);
 
 
     const handleSubmit = event => {
@@ -19,6 +22,7 @@ const AddItem = () => {
               name, price
             }),
             headers: {
+                'authorization': `${user?.email} ${localStorage.getItem('accessToken')}`,
                 'Content-type': 'application/json; charset=UTF-8',
             },
         })
@@ -28,7 +32,6 @@ const AddItem = () => {
             });
 
             event.target.reset();
-
     }
 
     return (

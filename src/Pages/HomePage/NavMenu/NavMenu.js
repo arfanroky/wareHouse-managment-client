@@ -1,9 +1,15 @@
 import { faNavicon } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { signOut } from 'firebase/auth';
 import React from 'react';
+import { useAuthState } from 'react-firebase-hooks/auth';
+
 import { Link } from 'react-router-dom';
+import auth from '../../../firebase.init';
+
 
 const NavMenu = () => {
+  const [user, loading, error] = useAuthState(auth);
     return (
         <nav className="
         relative
@@ -56,19 +62,25 @@ const NavMenu = () => {
             <Link className="nav-link text-gray-500 hover:text-gray-700 focus:text-gray-700 p-0" to="/">Home</Link>
           </li>
           <li className="nav-item p-2">
-            <Link className="nav-link text-gray-500 hover:text-gray-700 focus:text-gray-700 p-0" to="/">Perfumes</Link>
-          </li>
-          <li className="nav-item p-2">
-            <Link className="nav-link text-gray-500 hover:text-gray-700 focus:text-gray-700 p-0" to="/">Manage Perfume</Link>
-          </li>
-          <li className="nav-item p-2">
             <Link className="nav-link text-gray-500 hover:text-gray-700 focus:text-gray-700 p-0" to="/manage-inventory">ManageInventory</Link>
           </li>
           <li className="nav-item p-2">
-            <Link className="nav-link text-gray-500 hover:text-gray-700 focus:text-gray-700 p-0" to="/">Blog</Link>
+            <Link className="nav-link text-gray-500 hover:text-gray-700 focus:text-gray-700 p-0" to="/myItems">My Items</Link>
           </li>
           <li className="nav-item p-2">
-            <Link className="nav-link text-gray-500 hover:text-gray-700 focus:text-gray-700 p-0" to="/login">Login</Link>
+            <Link className="nav-link text-gray-500 hover:text-gray-700 focus:text-gray-700 p-0" to="/addItem">Add Item</Link>
+          </li>
+         
+          <li className="nav-item p-2">
+            <Link className="nav-link text-gray-500 hover:text-gray-700 focus:text-gray-700 p-0" to="/blog">Blog</Link>
+          </li>
+          <li className="nav-item p-2">
+       {
+         user ? <span>{user.displayName}
+         <button onClick={() => signOut(auth)}>Log Out</button>
+         </span> : <Link className="nav-link text-gray-500 hover:text-gray-700 focus:text-gray-700 p-0" to="/login">Login</Link>
+
+       }
           </li>
        
         </ul>

@@ -4,7 +4,8 @@ import usePerfumes from '../../../hooks/usePerfumes';
 
 const SinglePerfume = ({perfume}) => {
     const {name, img, company, description, quantity, _id} = perfume;
-    // const desc = description.slice(0, 100);
+    const desc = description?.slice(0, 100);
+
 
     const [perfumes] = usePerfumes();
     const navigate = useNavigate();
@@ -29,7 +30,7 @@ const SinglePerfume = ({perfume}) => {
                 </h2>
                 <p className='my-2'><span className='font-semibold text-xl text-pink-300'>Company: </span>  {company}</p>
                 <p className='my-2'><span className='font-semibold text-xl text-orange-300'>Quantity: </span>{quantity}</p>
-                <p className='text-md pr-2 text-justify pb-2'>{description}</p>
+                <p className='text-md pr-2 text-justify pb-2'>{desc}</p>
 
                 <button onClick={() => manageStockItem(_id)} className='absolute bottom-2 left-0 w-full py-3 bg-pink-300 text-white rounded text-lg font-semibold'>Manage Stock</button>
             </div>
