@@ -5,8 +5,7 @@ import { Link, useParams } from 'react-router-dom';
 const UpdatePerfume = () => {
     const {id} = useParams();
     const [perfumes, setPerfumes] = useState();
-    const [delivered, setDelivered] = useState(0);
-    const [addQuantity, setAddQuantity] =  useState(0);
+    const [delivered, setDelivered] = useState();
 
     useEffect(() => {
         fetch(`https://boiling-thicket-81121.herokuapp.com/perfume/${id}`)
@@ -14,13 +13,11 @@ const UpdatePerfume = () => {
         .then(data => {
             setPerfumes(data)
             setDelivered(data.quantity)
-            setAddQuantity(data.quantityNumber)
         })
-    }, []);
+    }, [id]);
 
 
     const updateDelivery = e => {
-        // e.preventDefault();
         const quantity = parseInt(delivered);
 
         const url = `https://boiling-thicket-81121.herokuapp.com/perfume/${id}`;
@@ -33,31 +30,29 @@ const UpdatePerfume = () => {
         })
         .then(res => res.json())
         .then(data => {
-            setDelivered(parseInt(quantity) - 1)
-            console.log("updated", data);
+            if(quantity > 0){
+                setDelivered(parseInt(quantity) - 1)
+                console.log("updated", data);
+            }
         })
     }
 
 
-    const quantityRef =  useRef(0);
-    const quantityIncrease = e => {
-        const currentQuantity = quantityRef.current.value;
-        const quantityNumber = parseInt(currentQuantity);
+    const quantityRef = useRef('');
+    const quantityIncrease = (e) => {
+        const quantityText = quantityRef.current.value;
+        const quantityNumber = Number(quantityText)
+        const deliveredNumber = Number(delivered);
 
-        const url = `https://boiling-thicket-81121.herokuapp.com/perfume/${id}`;
-        fetch(url, {
-          method: 'PUT',
-          headers: {
-              'content-type': 'application/json'
-          },
-          body: JSON.stringify({quantityNumber})
-        })
-        .then(res => res.json())
-        .then(data => {
-            setAddQuantity(parseInt(quantityNumber) + parseInt(delivered))
-            console.log("updated", data);
-        })
+
+         if(quantityNumber > 0){
+            const result= quantityNumber + deliveredNumber;
+            setDelivered(result);
+         }
+        
+
     }
+
 
     
 
@@ -74,9 +69,8 @@ const UpdatePerfume = () => {
                 <h2 className='text-5xl font-bold text-gray-300 my-3'>{perfumes?.name}</h2>
                 <p className='mb-2'><span className='font-semibold text-pink-400'>Company: </span>{perfumes?.company}</p>
                 <p className='mb-2'>
-                <span className='font-semibold text-sky-400'>Quantity: </span>{delivered}
+                <span className='font-semibold text-sky-400'>Quantity: </span>{delivered }
                 </p>
-                <p className='mb-2'><span className='font-semibold text-pink-400'>Availability: </span>{perfumes?.availability}</p>
                 <p className='mb-2'><span className='font-semibold text-sky-400'>Price: </span>{perfumes?.price}</p>
                 <p><span className='font-semibold text-sky-400'></span>{perfumes?.description}</p>
                 <br />
@@ -88,8 +82,12 @@ const UpdatePerfume = () => {
                     className='md:w-auto w-full py-3 px-8 md:my-0 my-3 bg-rose-400 rounded text-white' >Delivered</button>
 
                     <div className='flex justify-between items-center border rounded border-purple-300'>
-                        <input ref={quantityRef} className='py-3 pl-2 outline-none border-0 h-full' type="number" name="number"/>
-                        <button onClick={quantityIncrease} className='py-3 px-4 bg-purple-400 text-white'>UpdateQuantity</button>
+                        <input 
+                        ref={quantityRef}
+                         className='py-3 pl-2 outline-none border-0 h-full' type="number" name="number"/>
+                        <button 
+                        onClick={quantityIncrease}
+                         className='py-3 px-4 bg-purple-400 text-white'>UpdateQuantity</button>
                     </div>
                 </div>
             </div>
