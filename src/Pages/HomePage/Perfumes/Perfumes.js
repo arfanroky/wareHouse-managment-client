@@ -4,6 +4,7 @@ import SinglePerfume from '../SinglePerfume/SinglePerfume';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from '../../../firebase.init';
 import Spinner from '../../../Shared/Spinner/Spinner';
+import { Link } from 'react-router-dom';
 
 
 
@@ -31,6 +32,9 @@ const Perfumes = () => {
             }
 
             </div>
+           <div className="text-center">
+           <Link to='/manage-inventory'><button className='py-4 text-lg px-6 bg-sky-400 font-medium text-center text-white my-4 rounded'>Manage All Inventory</button></Link>
+           </div>
         </div>
     );
 };

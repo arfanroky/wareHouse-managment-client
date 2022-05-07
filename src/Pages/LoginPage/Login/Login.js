@@ -1,77 +1,74 @@
 import React, { useRef } from 'react';
+import {
+  useSignInWithEmailAndPassword,
+} from 'react-firebase-hooks/auth';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import contactImg from '../../../images/Banner/p-3.webp'
-import { useSignInWithEmailAndPassword, useSendEmailVerification} from 'react-firebase-hooks/auth';
 import auth from '../../../firebase.init';
-import { useAuthState } from 'react-firebase-hooks/auth';
 import SocialLogin from '../SocialLogin/SocialLogin';
-import Spinner from '../../../Shared/Spinner/Spinner';
+import { ToastContainer, toast } from 'react-toastify';
 
+import 'react-toastify/dist/ReactToastify.css';
+import Spinner from '../../../Shared/Spinner/Spinner';
+// import axios from 'axios';
+// import useToken from '../../../hooks/useToken';
 
 const Login = () => {
+  const emailRef = useRef('');
+  const passwordRef = useRef('');
+  const navigate = useNavigate();
+  const [signInWithEmailAndPassword, user, loading, error] =
+    useSignInWithEmailAndPassword(auth);
+//   const [sendPasswordResetEmail, sending] = useSendPasswordResetEmail(auth);
 
-    let navigate = useNavigate();
-    let location = useLocation();
-  
-    let from = location.state?.from?.pathname || "/";
-    const [user, loading, error] = useAuthState(auth);
+  const location = useLocation();
+  let from = location.state?.from?.pathname || '/';
 
-    const emailRef = useRef('');
-    const passwordRef = useRef('');
-    const [signInWithEmailAndPassword,] = useSignInWithEmailAndPassword(auth);
-    const [sendEmailVerification, sending, verifyerror] = useSendEmailVerification(auth);
-    // const [signInWithGoogle] = useSignInWithGoogle(auth);
+//   const [token] = useToken(user);
+if(loading){
+    return <Spinner></Spinner>
+}
 
-    let errorMessage;
+if(error){
+    return toast(error)
+}
 
-    if (loading || sending) {
-        return <Spinner></Spinner>
-    }
+  if (user) {
+    navigate(from, { replace: true });
+  }
+  else{
+    navigate('/home')
+  }
 
-    if(error || verifyerror){
-        return errorMessage = error?.message || verifyerror?.message;
-    }
+  const handleSubmit = async (event) => {
+    event.preventDefault();
 
-    if (user) {
-        const url = `http://localhost:5000/login`;
-        fetch(url, {
-            method: 'POST',
-            body: JSON.stringify({
-                email: user.email
-            }),
-            headers: {
-                'Content-type': 'application/json; charset=UTF-8',
-            },
-        })
-            .then((response) => response.json())
-            .then((data) => {
-                localStorage.setItem("accessToken", data.token)
-                navigate(from, {replace: true})
-            });
-    }
+    const email = emailRef.current.value;
+    const password = passwordRef.current.value;
+
+   await signInWithEmailAndPassword(email, password);
    
+  };
 
+  const navigateRegister = (event) => {
+    navigate('/register');
+  };
 
-    const handleLoginSubmit = async (event) => {
-        event.preventDefault();
+//   const resetPassword = async () => {
+//     const email = emailRef.current.value;
 
-        const email = emailRef.current.value;
-        const password = passwordRef.current.value;
-        console.log(email, password);
-        await signInWithEmailAndPassword(email, password);
-        await sendEmailVerification();
-        event.target.reset();
-    }
+//     if (email) {
+//       await sendPasswordResetEmail(email);
+//       toast('send email');
+//     }
+//     else {
+//       toast('please enter your email ')
+//     }
+//   };
 
-    return (
-        <>
-            <div className="container w-full mx-auto">
-                <div className="md:flex w-full
-          ml-auto md:justify-around md:items-center h-screen ">
-                    <div className='w-1/2 mx-auto'>
-                        <img className='w-3/4' src={contactImg} alt="" />
-                    </div>
-                    <form onSubmit={handleLoginSubmit} className='w-1/2 flex justify-center items-center flex-col mx-auto '>
+  return (
+    <div className="container w-50 mx-auto">
+      <h1 className="text-primary text-center my-2">Login</h1>
+      <form onSubmit={handleSubmit} className='w-1/2 flex justify-center items-center flex-col mx-auto '>
                         <div className='w-96 mx-auto border p-4 pb-4'>
                             <h1 className='text-purple-400 my-4 text-4xl font-extrabold text-center'>Login</h1>
                             <div className="relative z-0  mb-6 group">
@@ -83,12 +80,18 @@ const Login = () => {
                                 <label htmlFor="password" className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Password</label>
                             </div>
                             <input type="submit" value='Login' className='w-full text-white bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2' />
-                            <p className='text-red-700 font-semibold'>
+                            {/* <p className='text-red-700 font-semibold'>
                                 {errorMessage}
-                            </p>
+                            </p> */}
 
                             <p>
-                                new here? <Link className='text-purple-400 underline' to='/register'>Register</Link>
+                                new here?   <Link
+          className="text-danger pe-auto text-decoration-none"
+          to="/register"
+          onClick={navigateRegister}
+        >
+          Please Register
+        </Link>
                             </p>
 
                             <div className=' w-full flex justify-between my-4 items-center'>
@@ -97,15 +100,34 @@ const Login = () => {
                                 <div className=' w-1/2 border border-pink-400'></div>
                             </div>
                           <SocialLogin></SocialLogin>
+                          <ToastContainer />
                         </div>
 
                     </form>
 
-                </div>
-            </div>
-        </>
-
-    );
+      {/* <p>
+        New to Genius Car?{' '}
+        <Link
+          className="text-danger pe-auto text-decoration-none"
+          to="/register"
+          onClick={navigateRegister}
+        >
+          Please Register
+        </Link>
+      </p>
+      <p>
+        Forgot password?
+        <button
+          className="text-primary pe-auto text-decoration-none btn btn-link"
+          onClick={resetPassword}
+        >
+          Reset Password
+        </button>
+      </p>
+      <SocialLogin />
+       */}
+    </div>
+  );
 };
 
 export default Login;

@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom';
 
 const SingleInventory = ({perfume}) => {
     const {_id, name, img, description, price, company, quantity, availability} = perfume;
@@ -24,7 +25,7 @@ const SingleInventory = ({perfume}) => {
                 <p className='text-md pr-2 text-justify pb-2'>{desc}</p>
                 <p className='my-2'><span className='font-semibold text-xl text-orange-300'>Price: </span>{price}</p>
 
-                <button className='absolute bottom-0 left-0 w-full py-3 bg-pink-300 text-white rounded text-lg font-semibold'>Manage Stock</button>
+                <Link to={`/update-perfume/${_id}`}><button className='absolute bottom-0 left-0 w-full py-3 bg-pink-300 text-white rounded text-lg font-semibold'>Manage Stock</button></Link>
             </div>
             
         </div>

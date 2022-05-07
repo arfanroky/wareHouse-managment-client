@@ -1,21 +1,42 @@
 import React from 'react';
-import { useAuthState } from 'react-firebase-hooks/auth';
+import { useAuthState, useSendEmailVerification } from 'react-firebase-hooks/auth';
 import { Navigate, useLocation } from 'react-router-dom';
+import { toast, ToastContainer } from 'react-toastify';
 import auth from '../../../firebase.init';
+import Spinner from '../../../Shared/Spinner/Spinner';
 
 const PrivateAuth = ({children}) => {
-  const [user, loading, error] = useAuthState(auth);
-  let location = useLocation();
+    const [sendEmailVerification, sending, error] = useSendEmailVerification(auth);
+    const [user, loading] = useAuthState(auth);
+    const location = useLocation();
+    if(loading || sending){
+        return <Spinner/>
+    }
+    if(error){
+      return toast(error)
+    }
 
-  if (!user) {
-    // Redirect them to the /login page, but save the current location they were
-    // trying to go to when they were redirected. This allows us to send them
-    // along to that page after they login, which is a nicer user experience
-    // than dropping them off on the home page.
-    return <Navigate to="/login" state={{ from: location }} replace />;
-  }
+    if(!user){
+        return <Navigate to='/login' state={{from:location}} replace></Navigate>
+    }
 
-  return children;
+    if(user.providerData[0]?.providerId === 'password' &&!user.emailVerified){
+        return <div className='w-100 d-flex justify-content-center align-items-center flex-column' style={{height:'100vh'}}>
+            <h3 className='text-pink'>Your Email is not verified</h3>
+            <h5 className='text-success'>You Should verify your email</h5>
+            <button
+            className='btn btn-primary'
+        onClick={async () => {
+          await sendEmailVerification();
+          toast('Sent email');
+        }}
+      >
+        Send verification
+      </button>
+      <ToastContainer></ToastContainer>
+        </div>
+    }
+    return children;
 };
 
 export default PrivateAuth;
