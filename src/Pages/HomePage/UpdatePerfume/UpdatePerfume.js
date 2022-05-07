@@ -6,35 +6,57 @@ const UpdatePerfume = () => {
     const {id} = useParams();
     const [perfumes, setPerfumes] = useState();
     const [delivered, setDelivered] = useState(0);
+    const [addQuantity, setAddQuantity] =  useState(0);
 
     useEffect(() => {
-        fetch(`http://localhost:5000/perfume/${id}`)
+        fetch(`https://boiling-thicket-81121.herokuapp.com/perfume/${id}`)
         .then(res => res.json())
         .then(data => {
             setPerfumes(data)
             setDelivered(data.quantity)
+            setAddQuantity(data.quantityNumber)
         })
     }, []);
 
 
     const updateDelivery = e => {
-        e.preventDefault();
-        const quantity = parseInt(delivered) - 1;
+        // e.preventDefault();
+        const quantity = parseInt(delivered);
 
-        const url = `http://localhost:5000/perfume/${id}`;
+        const url = `https://boiling-thicket-81121.herokuapp.com/perfume/${id}`;
         fetch(url, {
           method: 'PUT',
           headers: {
               'content-type': 'application/json'
           },
-          body: JSON.stringify(quantity)
+          body: JSON.stringify({quantity})
         })
         .then(res => res.json())
         .then(data => {
             setDelivered(parseInt(quantity) - 1)
             console.log("updated", data);
         })
+    }
 
+
+    const quantityRef =  useRef(0);
+    const quantityIncrease = e => {
+        const currentQuantity = quantityRef.current.value;
+        const quantityNumber = parseInt(currentQuantity);
+
+        const url = `https://boiling-thicket-81121.herokuapp.com/perfume/${id}`;
+        fetch(url, {
+          method: 'PUT',
+          headers: {
+              'content-type': 'application/json'
+          },
+          body: JSON.stringify({quantityNumber})
+        })
+        .then(res => res.json())
+        .then(data => {
+            setAddQuantity(parseInt(quantityNumber) + parseInt(delivered))
+            console.log("updated", data);
+        })
     }
 
     
@@ -66,8 +88,8 @@ const UpdatePerfume = () => {
                     className='md:w-auto w-full py-3 px-8 md:my-0 my-3 bg-rose-400 rounded text-white' >Delivered</button>
 
                     <div className='flex justify-between items-center border rounded border-purple-300'>
-                        <input className='py-3 pl-2 outline-none border-0 h-full' type="number" name="number"/>
-                        <button className='py-3 px-4 bg-purple-400 text-white'>UpdateQuantity</button>
+                        <input ref={quantityRef} className='py-3 pl-2 outline-none border-0 h-full' type="number" name="number"/>
+                        <button onClick={quantityIncrease} className='py-3 px-4 bg-purple-400 text-white'>UpdateQuantity</button>
                     </div>
                 </div>
             </div>
