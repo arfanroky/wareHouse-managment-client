@@ -5,6 +5,7 @@ import auth from '../../../firebase.init';
 import SocialLogin from '../SocialLogin/SocialLogin';
 import Spinner from '../../../Shared/Spinner/Spinner';
 import { toast } from 'react-toastify';
+import registerImg from '../../../images/Banner/p-2.webp'
 
 
 const Register = () => {
@@ -47,14 +48,20 @@ const Register = () => {
     };
 
     return (
-        <div className="register-form">
-            <h1 className="text-center pb-4 my-8 font-extrabold text-purple-400 text-6xl uppercase">Register</h1>
+        <div className="container mx-auto w-screen min-h-screen">
+                        <h1 className="text-center pb-4 my-8 font-extrabold text-purple-400 text-6xl uppercase">Register</h1>
+            <div className=" w-full h-full md:flex  justify-center items-center ">
+                <div className='w-1/2 mx-auto md:block hidden'>
+                    <img className='w-3/4' src={registerImg} alt="" />
+                </div>
             <form onSubmit={handleRegister} className='w-1/2 flex justify-center items-center flex-col mx-auto '>
+
                 <div className='w-96 mx-auto border p-4 pb-4'>
                     <h1 className='text-purple-400 my-4 text-4xl font-extrabold text-center'>Register</h1>
 
                     <div className="relative z-0  mb-6 group">
-                        <input ref={nameRef} type="text" name="name" className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
+                        <input ref={nameRef} type="text" name="name" className="block py-2.5 px-0 w-full text-sm text-black bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-black dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
+
                         <label htmlFor="name" className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Your Name</label>
                     </div>
                     <div className="relative z-0  mb-6 group">
@@ -64,15 +71,15 @@ const Register = () => {
                         <label htmlFor="email" className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Email address</label>
                     </div>
                     <div className="relative z-0 mb-6 group">
-                        <input ref={passwordRef} type="password" name="password" id="floating_password" className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
+                        <input ref={passwordRef} type="password" name="password" id="floating_password" className="block py-2.5 px-0 w-full text-sm text-black bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-black dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
                         
                         <label htmlFor="password" className="peer-focus:font-medium absolute text-sm text-black dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Password</label>
                     </div>
                     <input type="submit" value='Register' className='w-full text-white bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2' />
-                    <p>
+                    <p className='text-gray-600 '>
                         Already have an account?{' '}
                         <Link
-                            className="text-primary pe-auto text-decoration-none "
+                            className="text-pink-400 underline"
                             to="/login"
                             onClick={navigateLogin}
                         >
@@ -89,6 +96,7 @@ const Register = () => {
                 </div>
 
             </form>
+            </div>
         </div>
     );
 };

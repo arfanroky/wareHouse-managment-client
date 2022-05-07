@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
 
-const SingleInventory = ({perfume}) => {
+const SingleInventory = ({perfume, handleDelete}) => {
     const {_id, name, img, description, price, company, quantity, availability} = perfume;
 
     const desc = description?.slice(0, 120);
@@ -9,7 +9,7 @@ const SingleInventory = ({perfume}) => {
   return (
     <>
 
-<div className='border w-96 bg-gray-50 hover:scale-95 transition-all relative' style={{height:'680px'}} >
+<div className='border w-96 bg-gray-50 hover:scale-95 transition-all relative rounded' style={{height:'680px'}} >
             
                 <img src={img} className='w-2/4 h-1/2 text-center mx-auto ' alt="" />
             
@@ -24,7 +24,12 @@ const SingleInventory = ({perfume}) => {
                 <p className='text-md pr-2 text-justify pb-2'>{desc}</p>
                 <p className='my-2'><span className='font-semibold text-xl text-orange-300'>Price: </span>{price}</p>
 
-                <Link to={`/update-perfume/${_id}`}><button className='absolute bottom-0 left-0 w-full py-3 bg-pink-300 text-white rounded text-lg font-semibold'>Manage Stock</button></Link>
+                <div className='absolute bottom-0 left-0 w-full border rounded text-lg font-semibold flex justify-around items-center gap-x-3'>
+                <button className='w-1/2 bg-red-300 py-3 text-white text-center rounded'>
+                <Link to={`/update-perfume/${_id}`}>Manage Stock</Link>
+                </button>
+                <button onClick={() => handleDelete(_id)} className='w-1/2 bg-black text-white py-3 rounded'>Delete</button>
+                </div>
             </div>
             
         </div>
