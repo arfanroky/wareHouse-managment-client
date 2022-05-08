@@ -5,11 +5,11 @@ const Information = () => {
   return (
     <div className='container mx-0 md:min-h-screen h-auto py-8'>
       <div className="w-full flex justify-around items-center">
-       <div className='w-1/2'>
+       <div className='w-1/2 md:block hidden'>
        <img className='w-3/4 mx-auto' src={extraImg} alt="" />
        </div>
 
-       <div className='w-1/2'>
+       <div className='md:w-1/2 px-6'>
        <div className="accordion" id="accordionExample">
 
   <div className="accordion-item bg-white border border-gray-200 mb-6 py-8">

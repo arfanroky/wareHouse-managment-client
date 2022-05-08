@@ -2,8 +2,8 @@ import React from 'react';
 
 const BrandName = () => {
     return (
-        <div className='container mx-auto w-full md:h-96 h-auto my-8'>
-            <div className="w-full grid md:grid-cols-4 grid-cols-1 justify-items-center gap-4 items-center h-full">
+        <div className='container mx-auto w-full md:h-96 h-screen my-8'>
+            <div className="w-full grid md:grid-cols-4 grid-cols-1 justify-items-center gap-4 items-center h-full md:px-0 px-8">
                 <div className=' w-full h-full border border-gray-200 rounded flex justify-center items-center gap-8'>
                     <h1 className='text-3xl font-bold text-gray-400'>CHANEL</h1>
                 </div>
