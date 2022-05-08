@@ -18,7 +18,7 @@ const MyItems = () => {
                 .then(res => res.json())
                 .then(data => {
                     console.log(data);
-                    if (data.acknowledged) {
+                    if (data.deletedCount > 0) {
                         const perfumeDelete = uploadPerfume.filter(p => p._id !== id);
                         console.log(perfumeDelete);
                         setUploadPerfume(perfumeDelete)
@@ -48,7 +48,8 @@ const MyItems = () => {
 
 
     return (
-        <div>
+        <div className='container mx-auto min-h-screen px-4'>
+            <h1 className='text-center my-8 text-5xl font-bold text-gray-400'>You Have Added </h1>
             {uploadPerfume.map(getPerfume => <SingleItem key={getPerfume._id}
                 getPerfume={getPerfume}
                 handleDelete={handleDelete}

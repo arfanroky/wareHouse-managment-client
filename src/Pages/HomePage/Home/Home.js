@@ -1,5 +1,6 @@
 import React from 'react';
-import ProductCarousel from '../../ExtraSection/ProductCarousel/ProductCarousel';
+import BrandName from '../../ExtraSection/BrandName/BrandName';
+import Information from '../../ExtraSection/Information/Information';
 import Banner from '../Banner/Banner';
 import Perfumes from '../Perfumes/Perfumes';
 
@@ -8,7 +9,8 @@ const Home = () => {
         <>
             <Banner></Banner>
             <Perfumes></Perfumes>
-            <ProductCarousel></ProductCarousel>
+            <Information></Information>
+            <BrandName></BrandName>
         </>
     );
 };

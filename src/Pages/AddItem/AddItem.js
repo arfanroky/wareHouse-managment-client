@@ -19,7 +19,6 @@ const AddItem = () => {
     event.preventDefault();
 
     const email = emailRef.current.value;
-    console.log(email);
     const name = nameRef.current.value;
     const price = priceRef.current.value;
     const company = companyRef.current.value;
@@ -29,7 +28,7 @@ const AddItem = () => {
 
     const item = { name, price, company, description, img, quantity, email }
 
-    const url = `https://boiling-thicket-81121.herokuapp.com/addItem`;
+    const url = `http://localhost:5000/addItem`;
 
     fetch(url, {
       method: 'POST',
@@ -113,12 +112,15 @@ focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none
 "
       id="exampleFormControlInput1"
       placeholder="Photo URL"
+      required
     />
+
   </div>
 </div>
 <div className="flex justify-center">
   <div className="mb-3 xl:w-96">
     <input
+    required
       ref={nameRef}
       type="text"
       className="
@@ -147,6 +149,7 @@ focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none
 <div className="flex justify-center">
   <div className="mb-3 xl:w-96">
     <input
+    required
       type="text"
       className="
 form-control
@@ -176,6 +179,7 @@ focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none
 <div className="flex justify-center">
   <div className="mb-3 xl:w-96">
     <input
+    required
       type="text"
       className="
 form-control
@@ -204,6 +208,7 @@ focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none
 <div className="flex justify-center">
   <div className="mb-3 xl:w-96">
     <input
+    required
       type="text"
       className="
 form-control
@@ -233,6 +238,7 @@ focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none
 <div className="flex justify-center">
   <div className="mb-3 xl:w-96">
     <input
+    required
       type="text"
       className="
 form-control
