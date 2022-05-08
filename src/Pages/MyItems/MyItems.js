@@ -7,7 +7,7 @@ const MyItems = () => {
 
     const [items, setItems] = useState([]);
     const [user] = useAuthState(auth);
-    // console.log(items);
+
 
     useEffect(() => {
         const email = user?.email;
@@ -15,7 +15,7 @@ const MyItems = () => {
             const url = `http://localhost:5000/item?email=${email}`;
 
             try {
-                // const { data } = await axiosPrivate.get(url);
+;
                 fetch(url)
                 .then(res => res.json())
                 .then(data => {
@@ -25,14 +25,9 @@ const MyItems = () => {
             }
             catch (error) {
                 console.log(error.message);
-                // if (error.response.status === 401 || error.response.status === 403) {
-                //     signOut(auth);
-                //     navigate('/login')
-                // }
             }
 
         }
-
         getOrders();
     }, [user])
 

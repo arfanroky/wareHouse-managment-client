@@ -48,13 +48,13 @@ const Register = () => {
     };
 
     return (
-        <div className="container mx-auto w-screen min-h-screen">
-                        <h1 className="text-center pb-4 my-8 font-extrabold text-purple-400 text-6xl uppercase">Register</h1>
-            <div className=" w-full h-full md:flex  justify-center items-center ">
+        <div className="container mx-auto w-screen h-fit">
+
+            <div className=" w-full h-full md:flex  justify-center items-center md:my-0 my-24">
                 <div className='w-1/2 mx-auto md:block hidden'>
                     <img className='w-3/4' src={registerImg} alt="" />
                 </div>
-            <form onSubmit={handleRegister} className='w-1/2 flex justify-center items-center flex-col mx-auto '>
+            <form onSubmit={handleRegister} className='md:w-1/2 w-full mx-auto'>
 
                 <div className='w-96 mx-auto border p-4 pb-4'>
                     <h1 className='text-purple-400 my-4 text-4xl font-extrabold text-center'>Register</h1>

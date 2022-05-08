@@ -1,19 +1,24 @@
 import { faNavicon } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { signOut } from 'firebase/auth';
+
 import React from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 
 import { Link } from 'react-router-dom';
 import auth from '../../../firebase.init';
+import BrandWithLogin from '../../BrandWithLogin/BrandWithLogin';
+
 
 
 const NavMenu = () => {
-  const [user, loading, error] = useAuthState(auth);
-    return (
-        <nav className="
+  const [user] = useAuthState(auth);
+
+  return (
+ <>
+ <BrandWithLogin></BrandWithLogin>
+    <nav className="
         relative
-        w-full
+        w-screen
         flex flex-wrap
         items-center
         justify-between
@@ -25,74 +30,58 @@ const NavMenu = () => {
         shadow-lg
         navbar navbar-expand-lg navbar-light
         ">
-        
-        <div className="container-fluid w-full flex flex-wrap items-center justify-between px-6 ">
+
+      <div className="container mx-auto w-full flex flex-wrap items-center justify-between px-6 ">
         <button className="
             navbar-toggler
-            text-cyan-500
+            text-gray-500
             hover:shadow-none hover:no-underline
             py-0
             px-2.5
             bg-transparent
             focus:outline-none focus:ring-0 focus:shadow-none focus:no-underline ml-auto
           " type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <FontAwesomeIcon className=' text-2xl border-2 border-cyan-500 px-2 py-1' icon={faNavicon}></FontAwesomeIcon>
+          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <FontAwesomeIcon className=' text-2xl border-2 border-gray-500 px-2 py-1' icon={faNavicon}></FontAwesomeIcon>
+    
         </button>
-        
-        <div className="collapse navbar-collapse flex-grow items-center " 
-        id="navbarSupportedContent">
-        <Link className="
-              flex
-              items-center
-              text-gray-900
-              hover:text-gray-900
-              focus:text-gray-900
-              font-bold
-              mt-2
-              lg:mt-0
-              md:my-0 my-2
-              mr-1
-            " to="/">
-          PERFUME-STORE
-        </Link>
 
-        <ul className="navbar-nav flex flex-col pl-0 list-style-none ml-auto">
-          <li className="nav-item p-2">
-            <Link className="nav-link text-gray-500 hover:text-gray-700 focus:text-gray-700 p-0" to="/">Home</Link>
-          </li>
-          <li className="nav-item p-2">
-            <Link className="nav-link text-gray-500 hover:text-gray-700 focus:text-gray-700 p-0" to="/manage-inventory">ManageInventory</Link>
-          </li>
-          <li className="nav-item p-2">
-            <Link className="nav-link text-gray-500 hover:text-gray-700 focus:text-gray-700 p-0" to="/myItems">My Items</Link>
-          </li>
-          <li className="nav-item p-2">
-            <Link className="nav-link text-gray-500 hover:text-gray-700 focus:text-gray-700 p-0" to="/addItem">Add Item</Link>
-          </li>
+        <div className="collapse navbar-collapse flex flex-wrap ml-auto"
+          id="navbarSupportedContent">
+
+       <ul className="navbar-nav flex flex-col list-style-none ">
+           <li className="nav-item p-2">
+              <Link className="nav-link text-gray-500 hover:text-pink-700 focus:text-gray-700 p-0" to="/">Home</Link>
+            </li>
+            
+             <li className="nav-item p-2 ">
+                <Link className="nav-link text-gray-500 hover:text-pink-700 focus:text-gray-700 p-0" to="/manage-inventory">ManageInventory</Link>
+              </li>
+
+            {
+              user && <li className="nav-item p-2">
+                <Link className="nav-link text-gray-500 hover:text-pink-700 focus:text-gray-700 p-0" to="/myItems">My Items</Link>
+              </li>
+            }
+
+            {
+              user && <li className="nav-item p-2">
+                <Link className="nav-link text-gray-500 hover:text-pink-700 focus:text-gray-700 p-0" to="/addItem">Add Item</Link>
+              </li>
+            }
+
+            <li className="nav-item p-2">
+              <Link className="nav-link text-gray-500 hover:text-pink-700 focus:text-gray-700 p-0" to="/blog">Blog</Link>
+            </li>
          
-          <li className="nav-item p-2">
-            <Link className="nav-link text-gray-500 hover:text-gray-700 focus:text-gray-700 p-0" to="/blog">Blog</Link>
-          </li>
-          <li className="nav-item p-2">
-       {
-         user ? <span>{user.displayName}
-         <button onClick={() => signOut(auth)}>Log Out</button>
-         </span> : <Link className="nav-link text-gray-500 hover:text-gray-700 focus:text-gray-700 p-0" to="/login">Login</Link>
-
-       }
-          </li>
-       
-        </ul>
-
+          </ul>
         </div>
 
-      
-      
-        </div>
-        
-      </nav>
-    );
+      </div>
+
+    </nav>
+ </>
+  );
 };
 
 export default NavMenu;

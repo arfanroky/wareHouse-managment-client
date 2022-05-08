@@ -3,20 +3,15 @@ import { useSignInWithGithub, useSignInWithGoogle } from 'react-firebase-hooks/a
 import { useLocation, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import auth from '../../../firebase.init';
-import Spinner from '../../../Shared/Spinner/Spinner';
 
 const SocialLogin = () => {
-    const [signInWithGoogle, user, loading, error] = useSignInWithGoogle(auth);
-    const [signInWithGithub, user1, loading1, error1] = useSignInWithGithub(auth);
+    const [signInWithGoogle, user, error] = useSignInWithGoogle(auth);
+    const [signInWithGithub, user1, error1] = useSignInWithGithub(auth);
     const navigate = useNavigate();
     const location = useLocation();
 
     let from = location.state?.from?.pathname || "/";
 
-
-    if(loading || loading1){
-        return <Spinner></Spinner>
-    }
 
     if (error || error1) {
         return toast(error || error1)

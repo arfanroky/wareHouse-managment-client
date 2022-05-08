@@ -67,9 +67,8 @@ const Login = () => {
   };
 
   return (
-    <div className="container mx-auto w-screen min-h-screen">
-            <h1 className="text-center text-6xl font-extrabold my-6 text-purple-400">Login</h1>
-      <div className="w-full h-full md:flex justify-around items-center">
+    <div className="container mx-auto w-screen h-fit">
+      <div className="w-full h-full md:flex justify-around items-center md:my-0 my-24">
       <div className='md:block hidden w-1/2'>
           <img className='w-3/4' src={loginImg} alt="" />
         </div>

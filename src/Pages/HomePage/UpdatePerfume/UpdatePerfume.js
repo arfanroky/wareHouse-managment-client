@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 
 
 const UpdatePerfume = () => {
@@ -50,7 +50,6 @@ const UpdatePerfume = () => {
             setDelivered(result);
          }
         
-
     }
 
 
@@ -67,12 +66,12 @@ const UpdatePerfume = () => {
 
             <div className='md:w-1/2 w-full mx-auto md:px-2 px-4'>
                 <h2 className='text-5xl font-bold text-gray-300 my-3'>{perfumes?.name}</h2>
-                <p className='mb-2'><span className='font-semibold text-pink-400'>Company: </span>{perfumes?.company}</p>
+                <p className='mb-2'><span className='font-bold '>Company: </span>{perfumes?.company}</p>
                 <p className='mb-2'>
-                <span className='font-semibold text-sky-400'>Quantity: </span>{delivered }
+                <span className='font-bold'>Quantity: </span>{(delivered && delivered > 0) ? delivered : 'sold out' }
                 </p>
-                <p className='mb-2'><span className='font-semibold text-sky-400'>Price: </span>{perfumes?.price}</p>
-                <p><span className='font-semibold text-sky-400'></span>{perfumes?.description}</p>
+                <p className='mb-2'><span className='font-bold'>Price: </span>{perfumes?.price}</p>
+                <p>{perfumes?.description}</p>
                 <br />
 
                 <div className='md:flex justify-between items-center  text-center gap-x-4'>
