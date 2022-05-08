@@ -6,6 +6,7 @@ import SocialLogin from '../SocialLogin/SocialLogin';
 import Spinner from '../../../Shared/Spinner/Spinner';
 import { toast } from 'react-toastify';
 import registerImg from '../../../images/Banner/p-2.webp'
+import useToken from '../../../hooks/useToken';
 
 
 const Register = () => {
@@ -16,6 +17,7 @@ const Register = () => {
     const [createUserWithEmailAndPassword, user, loading, error] =
         useCreateUserWithEmailAndPassword(auth, { sendEmailVerification: true });
     const [updateProfile, updating, error1] = useUpdateProfile(auth);
+    const [token] = useToken(user);
 
 
     const navigate = useNavigate();
@@ -28,7 +30,7 @@ const Register = () => {
         return toast(error || error1)
     }
 
-    if (user) {
+    if (token) {
         navigate('/home');
     }
 

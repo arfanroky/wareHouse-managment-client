@@ -12,6 +12,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import Spinner from '../../../Shared/Spinner/Spinner';
 import loginImg from '../../../images/Banner/p-3.webp';
 import axios from 'axios';
+import useToken from '../../../hooks/useToken';
 
 
 
@@ -22,6 +23,8 @@ const Login = () => {
   const [signInWithEmailAndPassword, user, loading, error] =
     useSignInWithEmailAndPassword(auth);
   const [sendPasswordResetEmail, sending, sendError] = useSendPasswordResetEmail(auth);
+
+  const [token] = useToken(user);
 
   const location = useLocation();
   let from = location.state?.from?.pathname || '/';
@@ -35,8 +38,8 @@ const Login = () => {
     return toast(error)
   }
 
-  if (user) {
-    // navigate(from, { replace: true });
+  if (token) {
+    navigate(from, { replace: true });
   }
   else {
     navigate('/home')
@@ -50,9 +53,6 @@ const Login = () => {
 
     await signInWithEmailAndPassword(email, password);
 
-    const {data} = await axios.post('https://boiling-thicket-81121.herokuapp.com/login', {email})
-    localStorage.setItem('accessToken', data.token)
-    navigate(from, { replace: true });
   };
 
   const navigateRegister = (event) => {
