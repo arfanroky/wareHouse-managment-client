@@ -1,12 +1,12 @@
 import React, { useRef } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
-import { useForm } from "react-hook-form";
 import { ToastContainer, toast } from 'react-toastify';
 import addImg from '../../images/Banner/p-3.webp'
 import 'react-toastify/dist/ReactToastify.css';
 
 const AddItem = () => {
+  const emailRef = useRef('')
   const nameRef = useRef('')
   const priceRef = useRef('')
   const imgRef = useRef('')
@@ -18,6 +18,8 @@ const AddItem = () => {
   const handleSubmit = event => {
     event.preventDefault();
 
+    const email = emailRef.current.value;
+    console.log(email);
     const name = nameRef.current.value;
     const price = priceRef.current.value;
     const company = companyRef.current.value;
@@ -25,9 +27,9 @@ const AddItem = () => {
     const img = imgRef.current.value;
     const quantity = quantityRef.current.value;
 
-    const item = { name, price, company, description, img, quantity }
+    const item = { name, price, company, description, img, quantity, email }
 
-    const url = `http://localhost:5000/addItem`;
+    const url = `https://boiling-thicket-81121.herokuapp.com/addItem`;
 
     fetch(url, {
       method: 'POST',
@@ -47,17 +49,47 @@ const AddItem = () => {
   }
 
   return (
-    <div className='container mx-auto w-full min-h-screen flex justify-center items-center'>
+    <div className='container mx-auto w-full h-fit flex justify-center items-center'>
 
      <div className='w-full h-full md:flex justify-evenly items-center'>
        <div className='w-1/2 text-center md:block hidden'>
          <img className='w-3/4' src={addImg} alt="" />
        </div>
-       <form onSubmit={handleSubmit} className='md:w-1/2 w-full mx-auto'>
+       <form onSubmit={handleSubmit} className='md:w-1/2 w-full mx-auto  md:my-0 my-6'>
 
   <h1 className='text-center mb-4 text-4xl font-bold text-gray-400 uppercase'>Add Your Item</h1>
-<div className="flex justify-center">
   <ToastContainer></ToastContainer>
+
+<div className="flex justify-center">
+  <div className="mb-3 xl:w-96">
+    <input
+    readOnly
+      type="url"
+      ref={emailRef}
+      className="
+form-control
+block
+w-full
+px-3
+py-1.5
+text-base
+font-normal
+text-gray-700
+bg-white bg-clip-padding
+border border-solid border-gray-300
+rounded
+transition
+ease-in-out
+m-0
+focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none
+"
+      id="exampleFormControlInput1"
+      value={user?.email}
+      
+    />
+  </div>
+</div>
+<div className="flex justify-center">
   <div className="mb-3 xl:w-96">
     <input
       type="url"
@@ -84,7 +116,6 @@ focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none
     />
   </div>
 </div>
-
 <div className="flex justify-center">
   <div className="mb-3 xl:w-96">
     <input
@@ -109,7 +140,6 @@ focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none
 "
       id="exampleFormControlInput1"
       placeholder="Name"
-    //   ref={nameRef}
     />
   </div>
 </div>
@@ -142,33 +172,6 @@ focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none
   </div>
 </div>
 
-<div className="flex justify-center">
-  <div className="mb-3 xl:w-96">
-    <input
-      type="text"
-      className="
-form-control
-block
-w-full
-px-3
-py-1.5
-text-base
-font-normal
-text-gray-700
-bg-white bg-clip-padding
-border border-solid border-gray-300
-rounded
-transition
-ease-in-out
-m-0
-focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none
-"
-      id="exampleFormControlInput1"
-      placeholder="Quantity"
-      ref={quantityRef}
-    />
-  </div>
-</div>
 
 <div className="flex justify-center">
   <div className="mb-3 xl:w-96">
@@ -197,6 +200,35 @@ focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none
     />
   </div>
 </div>
+
+<div className="flex justify-center">
+  <div className="mb-3 xl:w-96">
+    <input
+      type="text"
+      className="
+form-control
+block
+w-full
+px-3
+py-1.5
+text-base
+font-normal
+text-gray-700
+bg-white bg-clip-padding
+border border-solid border-gray-300
+rounded
+transition
+ease-in-out
+m-0
+focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none
+"
+      id="exampleFormControlInput1"
+      placeholder="Quantity"
+      ref={quantityRef}
+    />
+  </div>
+</div>
+
 
 <div className="flex justify-center">
   <div className="mb-3 xl:w-96">
