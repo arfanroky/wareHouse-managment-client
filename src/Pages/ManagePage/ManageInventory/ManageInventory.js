@@ -1,15 +1,16 @@
 import React from 'react';
+import useDelete from '../../../hooks/useDelete';
 import usePerfumes from '../../../hooks/usePerfumes';
 import SingleInventory from '../SingleInventory/SingleInventory';
 
 const ManageInventory = () => {
     const [perfumes, setPerfumes] = usePerfumes();
+    const {handleDelete} = useDelete();
 
-    const handleDelete = (id) => {
+    /* const handleDelete = (id) => {
         const confirmation = window.confirm('Are Your Sure You Want To Delete ?')
         if (confirmation) {
             const url = `https://boiling-thicket-81121.herokuapp.com/perfume/${id}`
-            const fake = `http://localhost:5000/perfume/${id}`;
             fetch(url, {
                 method: 'DELETE',
             })
@@ -23,7 +24,7 @@ const ManageInventory = () => {
                 }
             })
         }
-    }
+    } */
 
     return (
         <div className='container-lg max-w-screen-xl  mx-auto py-8'>

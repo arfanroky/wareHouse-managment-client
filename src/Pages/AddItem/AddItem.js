@@ -48,7 +48,7 @@ const AddItem = () => {
 
     return (
        <div className='w-1/2 mx-auto mt-12'>
-  <form onSubmit={handleSubmit}>
+  <form onSubmit={handleSubmit} className=' my-4'>
                
 <div className="flex justify-center">
   <ToastContainer></ToastContainer>

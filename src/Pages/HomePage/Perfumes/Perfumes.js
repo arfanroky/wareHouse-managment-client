@@ -5,11 +5,15 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from '../../../firebase.init';
 import Spinner from '../../../Shared/Spinner/Spinner';
 import { Link } from 'react-router-dom';
+import useDelete from '../../../hooks/useDelete';
+import { toast, ToastContainer } from 'react-toastify';
 
 
 
 const Perfumes = () => {
     const [user, loading, error] = useAuthState(auth);
+    const {handleDelete}  = useDelete();
+    console.log(handleDelete);
 
     const [perfumes, setPerfumes] = usePerfumes();
     const sixItem = perfumes.slice(0, 6);
@@ -17,23 +21,28 @@ const Perfumes = () => {
     if (loading) {
         return <Spinner></Spinner>
     }
+    if(error){
+        return toast(error)
+    }
 
-    const handleDelete = (id) => {
+/*     const handleDelete = (id) => {
         const confirmation = window.confirm('Are Your Sure You Want To Delete ?')
         if (confirmation) {
-            const perfumeDelete = perfumes.filter(p => p._id !== id);
             const url = `https://boiling-thicket-81121.herokuapp.com/perfume/${id}`
             fetch(url, {
                 method: 'DELETE',
-                body: JSON.stringify({perfumeDelete})
             })
             .then(res => res.json())
             .then(data => {
                 console.log(data);
-                // setPerfumes(data)
+                if(data.deletedCount > 0){
+                    const perfumeDelete = perfumes.filter(p => p._id !== id);
+                    console.log(perfumeDelete);
+                    setPerfumes(perfumeDelete)
+                }
             })
         }
-    }
+    } */
 
     return (
         <div className='container-lg max-w-screen-xl  mx-auto py-8'>
@@ -48,6 +57,7 @@ const Perfumes = () => {
                     ></SinglePerfume>)
                 }
 
+                <ToastContainer></ToastContainer>
             </div>
             <div className="text-center">
                 <Link to='/manage-inventory'><button className='py-4 text-lg px-6 bg-sky-400 font-medium text-center text-white my-4 rounded'>Manage All Inventory</button></Link>

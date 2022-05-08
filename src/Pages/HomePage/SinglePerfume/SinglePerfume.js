@@ -1,6 +1,5 @@
-import React, { useState } from 'react';
-import { Link, Navigate, useNavigate } from 'react-router-dom';
-import usePerfumes from '../../../hooks/usePerfumes';
+
+import { Link} from 'react-router-dom';
 
 const SinglePerfume = ({perfume, handleDelete}) => {
     const {name, img, company, description, quantity, _id} = perfume;
