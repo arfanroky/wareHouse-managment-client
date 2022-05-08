@@ -11,6 +11,8 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Spinner from '../../../Shared/Spinner/Spinner';
 import loginImg from '../../../images/Banner/p-3.webp';
+import axios from 'axios';
+
 
 
 const Login = () => {
@@ -34,7 +36,7 @@ const Login = () => {
   }
 
   if (user) {
-    navigate(from, { replace: true });
+    // navigate(from, { replace: true });
   }
   else {
     navigate('/home')
@@ -48,6 +50,9 @@ const Login = () => {
 
     await signInWithEmailAndPassword(email, password);
 
+    const {data} = await axios.post('https://boiling-thicket-81121.herokuapp.com/login', {email})
+    localStorage.setItem('accessToken', data.token)
+    navigate(from, { replace: true });
   };
 
   const navigateRegister = (event) => {

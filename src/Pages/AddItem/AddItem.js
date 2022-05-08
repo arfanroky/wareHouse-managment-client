@@ -28,13 +28,13 @@ const AddItem = () => {
 
     const item = { name, price, company, description, img, quantity, email }
 
-    const url = `http://localhost:5000/addItem`;
+    const url = `https://boiling-thicket-81121.herokuapp.com/addItem`;
 
     fetch(url, {
       method: 'POST',
       body: JSON.stringify(item),
       headers: {
-        'authorization': `${user?.email} ${localStorage.getItem('accessToken')}`,
+        'authorization': `Bearer ${localStorage.getItem('accessToken')}`,
         'Content-type': 'application/json; charset=UTF-8',
       },
     })
