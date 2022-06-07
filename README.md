@@ -10,3 +10,4 @@ if you prefer then watch this project live [Live Site](https://perfume-stores-si
 - node js and express js
 - mongodb
 - git and heroku
+- Tailwind & tw-elements
